@@ -4365,7 +4365,11 @@ ensure_unix_signal_handler_installed_unlocked (int signum)
 
   action.sa_handler = g_unix_signal_handler;
   sigemptyset (&action.sa_mask);
+#ifdef __QNXNTO__
+  action.sa_flags = SA_NOCLDSTOP;
+#else
   action.sa_flags = SA_RESTART | SA_NOCLDSTOP;
+#endif
   sigaction (signum, &action, NULL);
 }
 
