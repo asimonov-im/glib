@@ -13,7 +13,11 @@ gboolean non_blocking = FALSE;
 gboolean use_udp = FALSE;
 int cancel_timeout = 0;
 int read_timeout = 0;
+#ifdef __QNXNTO__
+int delay_ = 0;
+#else
 int delay = 0;
+#endif
 gboolean unix_socket = FALSE;
 const char *tls_cert_file = NULL;
 
@@ -34,7 +38,11 @@ static GOptionEntry cmd_entries[] = {
   {"unix", 'U', 0, G_OPTION_ARG_NONE, &unix_socket,
    "Use a unix socket instead of IP", NULL},
 #endif
+#ifdef __QNXNTO__
+  {"delay", 'd', 0, G_OPTION_ARG_INT, &delay_,
+#else
   {"delay", 'd', 0, G_OPTION_ARG_INT, &delay,
+#endif
    "Delay responses by the specified number of seconds", NULL},
   {"timeout", 't', 0, G_OPTION_ARG_INT, &read_timeout,
    "Time out reads after the specified number of seconds", NULL},
@@ -289,11 +297,21 @@ main (int argc,
 
       to_send = size;
 
+#ifdef __QNXNTO__
+      if (delay_)
+#else
       if (delay)
+#endif
 	{
+#ifdef __QNXNTO__
+	  if (verbose)
+	    g_print ("delaying %d seconds before response\n", delay_);
+	  g_usleep (1000 * 1000 * delay_);
+#else
 	  if (verbose)
 	    g_print ("delaying %d seconds before response\n", delay);
 	  g_usleep (1000 * 1000 * delay);
+#endif
 	}
 
       while (to_send > 0)
