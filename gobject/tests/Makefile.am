@@ -20,11 +20,17 @@ TEST_PROGS += 		\
 
 signals_SOURCES = signals.c marshalers.c
 
+if CROSS_COMPILING
+  glib_genmarshal=$(GLIB_GENMARSHAL)
+else
+  glib_genmarshal=../glib-genmarshal
+endif
+
 marshalers.h: Makefile.am marshalers.list
-	$(AM_V_GEN) ../glib-genmarshal --prefix=test $(srcdir)/marshalers.list --header --valist-marshallers > marshalers.h
+	$(AM_V_GEN) $(glib_genmarshal) --prefix=test $(srcdir)/marshalers.list --header --valist-marshallers > marshalers.h
 
 marshalers.c: Makefile.am marshalers.list
-	$(AM_V_GEN) ../glib-genmarshal --prefix=test $(srcdir)/marshalers.list --body --valist-marshallers > marshalers.c
+	$(AM_V_GEN) $(glib_genmarshal) --prefix=test $(srcdir)/marshalers.list --body --valist-marshallers > marshalers.c
 
 BUILT_SOURCES = marshalers.h marshalers.c
 CLEANFILES = marshalers.h marshalers.c

@@ -415,6 +415,8 @@ TEST_PROGS = boxed enums param signals threadtests dynamictests \
 INCLUDES = -g $(gobject_INCLUDES) $(GLIB_DEBUG_FLAGS)
 LDADD = ../libgobject-2.0.la $(top_builddir)/gthread/libgthread-2.0.la $(top_builddir)/glib/libglib-2.0.la
 signals_SOURCES = signals.c marshalers.c
+@CROSS_COMPILING_FALSE@glib_genmarshal = ../glib-genmarshal
+@CROSS_COMPILING_TRUE@glib_genmarshal = $(GLIB_GENMARSHAL)
 BUILT_SOURCES = marshalers.h marshalers.c
 CLEANFILES = marshalers.h marshalers.c
 ifaceproperties_SOURCES = ifaceproperties.c testcommon.h
@@ -837,11 +839,11 @@ lcov-clean:
 # run tests in cwd as part of make check
 check-local: test-nonrecursive
 
-marshalers.h: Makefile.am marshalers.list
-	$(AM_V_GEN) ../glib-genmarshal --prefix=test $(srcdir)/marshalers.list --header --valist-marshallers > marshalers.h
+marshalers.h: Makefile.am marshalers.list $(glib_genmarshal)
+	$(AM_V_GEN) $(glib_genmarshal) --prefix=test $(srcdir)/marshalers.list --header --valist-marshallers > marshalers.h
 
-marshalers.c: Makefile.am marshalers.list
-	$(AM_V_GEN) ../glib-genmarshal --prefix=test $(srcdir)/marshalers.list --body --valist-marshallers > marshalers.c
+marshalers.c: Makefile.am marshalers.list $(glib_genmarshal)
+	$(AM_V_GEN) $(glib_genmarshal) --prefix=test $(srcdir)/marshalers.list --body --valist-marshallers > marshalers.c
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
