@@ -30,10 +30,12 @@
 #include <string.h>
 #include <locale.h>
 
+#ifndef __QNXNTO__ // QNX does not support gelf, even though it has libelf.
 #ifdef HAVE_LIBELF
 #include <libelf.h>
 #include <gelf.h>
 #include <sys/mman.h>
+#endif
 #endif
 
 #include <gio/gio.h>
