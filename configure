@@ -4799,6 +4799,7 @@ esac
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $glib_native_beos" >&5
 $as_echo "$glib_native_beos" >&6; }
 
+
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Win32" >&5
 $as_echo_n "checking for Win32... " >&6; }
 LIB_EXE_MACHINE_FLAG=X86
@@ -22110,18 +22111,10 @@ if ${glib_cv_stack_grows+:} false; then :
 else
 
         if test "$cross_compiling" = yes; then :
-  case "$host_os" in
-    *nto* | *qnx*)
-      glib_cv_stack_grows=no
-      ;;
-    *)
-      { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-        $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-      as_fn_error $? "cannot run test program while cross compiling
-        See \`config.log' for more details" "$LINENO" 5; }
-      ;;
-  esac
-
+  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "cannot run test program while cross compiling
+See \`config.log' for more details" "$LINENO" 5; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -25357,17 +25350,10 @@ if ${glib_cv_uscore+:} false; then :
 else
 
 		if test "$cross_compiling" = yes; then :
-  case "$host_os" in
-    *nto* | *qnx*)
-      glib_cv_uscore=no
-      ;;
-    *)
-      { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-    $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-    as_fn_error $? "cannot run test program while cross compiling
-    See \`config.log' for more details" "$LINENO" 5; }
-      ;;
-  esac
+  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "cannot run test program while cross compiling
+See \`config.log' for more details" "$LINENO" 5; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -26495,18 +26481,10 @@ if ${ac_cv_func_posix_getpwuid_r+:} false; then :
   $as_echo_n "(cached) " >&6
 else
   if test "$cross_compiling" = yes; then :
-  case "$host_os" in
-    *nto* | *qnx*)
-      ac_cv_func_posix_getpwuid_r=no
-      ;;
-    *)
-        { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-      $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-      as_fn_error $? "cannot run test program while cross compiling
-      See \`config.log' for more details" "$LINENO" 5; }
-      ;;
-  esac
-
+  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "cannot run test program while cross compiling
+See \`config.log' for more details" "$LINENO" 5; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -26592,18 +26570,10 @@ if ${ac_cv_func_posix_getgrgid_r+:} false; then :
   $as_echo_n "(cached) " >&6
 else
   if test "$cross_compiling" = yes; then :
-  case "$host_os" in
-    *nto* | *qnx*)
-      ac_cv_func_posix_getgrgid_r=no
-      ;;
-    *)
-	  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-	$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-	as_fn_error $? "cannot run test program while cross compiling
-	See \`config.log' for more details" "$LINENO" 5; }
-      ;;
-  esac
-
+  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "cannot run test program while cross compiling
+See \`config.log' for more details" "$LINENO" 5; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
